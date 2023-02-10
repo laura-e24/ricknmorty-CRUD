@@ -1,0 +1,62 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Character {
+  id: Int!
+  name: String
+  status: String!
+  species: String!
+  type: String
+  gender: String!
+  origin: String!
+  image: String!
+}
+
+type Post {
+  id: Int!
+  title: String!
+  content: String
+  user: User!
+  userId: Int!
+}
+
+type User {
+  id: Int!
+  alias: String!
+  character: Character!
+  characterId: Int!
+  posts: [Post!]
+}
+
+type Query {
+  getAllUsers: [User!]!
+  getAllPosts: [Post!]!
+  post(id: Int!): Post!
+  getAllCharacters: [Character!]!
+}
+
+type Mutation {
+  createUser(user: CreateUserInput!): User!
+  createPost(createPostInput: CreatePostInput!): Post!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+  removePost(id: Int!): Post!
+}
+
+input CreateUserInput {
+  characterId: Float!
+  alias: String!
+}
+
+input CreatePostInput {
+  title: String!
+  content: String
+  userId: Float!
+}
+
+input UpdatePostInput {
+  title: String
+  content: String
+  userId: Float
+  id: Int!
+}
